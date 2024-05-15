@@ -44,5 +44,6 @@ rm(config.build.assetsRoot, e => {
             '  Tip: built files are meant to be served over an HTTP server.\n'
             + '  Opening index.html over file:// won\'t work.\n'
         ))
+        process.exit(0)
     })
 })
