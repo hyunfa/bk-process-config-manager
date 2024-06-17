@@ -5,7 +5,7 @@
 
 import path from 'path'
 import prodEnv from './prod.env'
-import devEnv from './dev.env'
+import devEnv, { proxyTableTarget } from './dev.env'
 
 export default {
     build: {
@@ -27,7 +27,14 @@ export default {
         localDevPort: JSON.parse(devEnv.LOCAL_DEV_PORT),
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
-        proxyTable: {},
+        proxyTable: {
+            '/api': {
+                target: `${proxyTableTarget}`, // 接口域名
+                changeOrigin: true, // 是否跨域
+                secure: false,
+                toProxy: true,
+            },
+        },
         cssSourceMap: false,
         autoOpenBrowser: true
     }

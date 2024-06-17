@@ -16,11 +16,16 @@
 import merge from 'webpack-merge'
 import prodEnv from './prod.env'
 
+// 1. 线上代理地址 eg: https://xxxxxx-xxx.xx.com
+export const proxyTableTarget = 'https://paas.ee225.bktencent.com'
+// 2. 本地访问host地址 eg: https://dev.xxxxxx-xxx.xx.com
+export const devHost = 'http://dev.paas.ee225.bktencent.com';
+
 const NODE_ENV = JSON.stringify('development')
 
 export default merge(prodEnv, {
     NODE_ENV: NODE_ENV,
-    LOCAL_DEV_URL: JSON.stringify('http://dev.paas.ee225.bktencent.com'), // 配置 host 规避浏览器跨域警告，获取cookie
+    LOCAL_DEV_URL: JSON.stringify(`${devHost}`), // 配置 host 规避浏览器跨域警告，获取cookie
     LOCAL_DEV_PORT: JSON.stringify('8080'),
     AJAX_MOCK_PARAM: JSON.stringify('mock-file')
 })

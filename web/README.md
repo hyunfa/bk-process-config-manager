@@ -25,7 +25,12 @@ npm run build:analyzer
 // npm run doc 执行后无效，这里注释了
 
 # 补充说明，环境搭建
-1.dev.env.js中的LOCAL_DEV_URL:JSON.stringify('http://dev.xxx.com');// hosts配置 127.0.0.1 dev.xxx.com
-2.index-dev.html中const AJAX_URL_PREFIX = 'http://xxx.com/';
-1和2的xxx是一样的，2中的http://xxx.com要是能访问的线上环境（gsekit的测试环境，预发布环境等）
+1.dev.env.js中修改proxyTableTarget，devHost，hosts配置 127.0.0.1 dev.xxxxxx-xxx.xx.com
+2.index-dev.html中
+    const LOGIN_URL = 'login.x.xxx.com/'; // 登录地址
+    const CSRF_COOKIE_NAME = 'xx_csrftoken'; //具体看cookie中的csrftoken的key
+    let SITE_URL = ''; // 一般是这个，具体根据情况来
+    const AJAX_URL_PREFIX = '/'
+    
+
 ```
